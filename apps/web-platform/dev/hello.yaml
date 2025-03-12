@@ -15,7 +15,7 @@ spec:
     helm:
       releaseName: poc-gitops-web-platform
       valuesObject:
-        replicaCount: 1
+        replicaCount: 2
         image:
           # This is the image of the application
           repository: ghcr.io/poc-gitops/web-platform/web-platform
