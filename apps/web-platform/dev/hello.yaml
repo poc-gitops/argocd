@@ -4,7 +4,7 @@ metadata:
   namespace: argocd
   name: poc-gitops-web-platform
 spec:
-  project: poc-gitops
+  project: poc-gitops-dev
   destination:
     server: "https://kubernetes.default.svc"
     namespace: poc-gitops-web-platform
