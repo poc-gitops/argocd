@@ -2,18 +2,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: test-argo
+  name: poc-gitops-web-platform
 spec:
-  project: taind-lab
+  project: poc-gitops
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: default
+    namespace: poc-gitops-web-platform
   source:
     repoURL: https://spartan-stratos.github.io/helm-charts
     chart: spartan
     targetRevision: 0.1.8
     helm:
-      releaseName: test-argo
+      releaseName: web-platform
       valuesObject:
         replicaCount: 1
         image:
@@ -25,7 +25,7 @@ spec:
           enabled: true
           className: "cloudflare-tunnel"
           hosts:
-            - host: web-platform-dev.mhcp001.uk
+            - host: poc-gitops.mhcp001.uk
               paths:
                 - path: /
                   pathType: ImplementationSpecific
