@@ -13,7 +13,7 @@ spec:
     chart: spartan
     targetRevision: 0.1.8
     helm:
-      releaseName: web-platform
+      releaseName: poc-gitops-web-platform
       valuesObject:
         replicaCount: 1
         image:
