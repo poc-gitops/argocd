@@ -19,7 +19,7 @@ spec:
         image:
           # This is the image of the application
           repository: ghcr.io/poc-gitops/web-platform/web-platform
-          tag: m-af52b34-20250312163259 # This is the commit hash of the image
+          tag: m-3af66a9-20250312181302 # This is the commit hash of the image
         containerPort: 80
         ingress:
           enabled: true
