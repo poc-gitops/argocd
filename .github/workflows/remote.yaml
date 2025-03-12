@@ -1,7 +1,11 @@
 name: Image Updated
 on:
   repository_dispatch:
-    types: [new-image-available]
+    types: [update-image-dev]
+
+permissions:
+  contents: write
+
 jobs:
   updateImageTag:
     runs-on: ubuntu-latest
@@ -11,3 +15,14 @@ jobs:
           ref: main
       - run: echo ${{ github.event.client_payload.tag }}
       - run: echo ${{ github.event.client_payload.service }}
+
+      - name: Update image tag
+        run: |
+          yq e -i '.spec.source.helm.valuesObject.image.tag = "${{ github.event.client_payload.tag }}"' apps/${{ github.event.client_payload.service }}/**/*.yaml
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: Update ${{ github.event.client_payload.service }} image tag to ${{ github.event.client_payload.tag }}
+          add: "apps/${{ github.event.client_payload.service }}/**"
+          committer_name: TaiND bot
+          committer_email: tai.nguyen@c0x12c.com
