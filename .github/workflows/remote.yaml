@@ -1,0 +1,13 @@
+name: Image Updated
+on:
+  repository_dispatch:
+    types: [new-image-available]
+jobs:
+  updateImageTag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - run: echo ${{ github.event.client_payload.tag }}
+      - run: echo ${{ github.event.client_payload.service }}
