@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   namespace: argocd
-  name: poc-gitops
+  name: poc-gitops-dev
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -17,7 +17,7 @@ spec:
       name: "{{index .path.segments 1}}"
     spec:
       # The project the application belongs to.
-      project: poc-gitops
+      project: poc-gitops-dev
 
       # Source of the application manifests
       source:
