@@ -14,7 +14,7 @@ spec:
           - path: apps/*/dev
   template:
     metadata:
-      name: "{{index .path.segments 1}}"
+      name: "poc-gitops-dev-{{index .path.segments 1}}"
     spec:
       # The project the application belongs to.
       project: poc-gitops-dev
