@@ -23,6 +23,6 @@ jobs:
       - uses: EndBug/add-and-commit@v9
         with:
           message: Update ${{ github.event.client_payload.service }} image tag to ${{ github.event.client_payload.tag }}
-          add: "apps/${{ github.event.client_payload.service }}/**"
+          add: "dev/${{ github.event.client_payload.service }}/**"
           committer_name: TaiND bot
           committer_email: tai.nguyen@c0x12c.com
