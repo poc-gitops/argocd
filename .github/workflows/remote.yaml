@@ -18,7 +18,7 @@ jobs:
 
       - name: Update image tag
         run: |
-          yq e -i '.spec.source.helm.valuesObject.image.tag = "${{ github.event.client_payload.tag }}"' apps/${{ github.event.client_payload.service }}/**/*.yaml
+          yq e -i '.spec.source.helm.valuesObject.image.tag = "${{ github.event.client_payload.tag }}"' dev/${{ github.event.client_payload.service }}/*.yaml
 
       - uses: EndBug/add-and-commit@v9
         with:
