@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: poc-gitops-dev-web-platform
+  name: poc-gitops-web-platform-dev
 spec:
   project: poc-gitops-dev
   destination:
