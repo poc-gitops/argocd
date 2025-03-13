@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: poc-gitops-service-platform-data-platform-dev
+spec:
+  project: poc-gitops-dev
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: poc-gitops-dev
+  source:
+    repoURL: https://spartan-stratos.github.io/helm-charts
+    chart: spartan
+    targetRevision: 0.1.8
+    helm:
+      releaseName: data-platform-dev
+      valuesObject:
+        replicaCount: 1
+        image:
+          # This is the image of the application
+          repository: ghcr.io/poc-gitops/web-platform/web-platform
+          tag: m-af52b34-20250312163259 # This is the commit hash of the image
+        containerPort: 80
+        ingress:
+          enabled: true
+          className: "cloudflare-tunnel"
+          hosts:
+            - host: data-platform.mhcp001.uk
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
