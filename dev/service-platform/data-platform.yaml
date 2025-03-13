@@ -5,6 +5,12 @@ metadata:
   name: poc-gitops-service-platform-data-platform-dev
 spec:
   project: poc-gitops-dev
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: poc-gitops-dev
